@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import es.us.isa.ideas.module.common.AppResponse;
 import es.us.isa.ideas.module.common.AppResponse.Status;
 import es.us.isa.ideas.module.controller.BaseLanguageController;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -16,7 +17,8 @@ public class TXTLanguageController extends BaseLanguageController {
 
 	@RequestMapping(value = "/format/{format}/checkLanguage", method = RequestMethod.POST)
 	@ResponseBody
-	public AppResponse checkLanguage(String id, String content, String fileUri) {
+        @Override
+	public AppResponse checkLanguage(String id, String content, String fileUri,HttpServletRequest request) {
 		
 		AppResponse appResponse = new AppResponse();
 		
@@ -36,7 +38,8 @@ public class TXTLanguageController extends BaseLanguageController {
 
 	@RequestMapping(value = "/convert", method = RequestMethod.POST)
 	@ResponseBody
-	public AppResponse convertFormat(String currentFormat, String desiredFormat, String fileUri, String content) {
+        @Override
+	public AppResponse convertFormat(String currentFormat, String desiredFormat, String fileUri, String content,HttpServletRequest request) {
 		AppResponse appResponse = new AppResponse();
 		
 		return appResponse;
@@ -44,7 +47,8 @@ public class TXTLanguageController extends BaseLanguageController {
 
 	@RequestMapping(value = "/operation/{id}/execute", method = RequestMethod.POST)
 	@ResponseBody
-	public AppResponse executeOperation(String id, String content, String fileUri, String auxArg0) {
+        @Override
+	public AppResponse executeOperation(String id, String content, String fileUri, String auxArg0,HttpServletRequest request) {
 		AppResponse appResponse = new AppResponse();
 		return appResponse;
 	}
